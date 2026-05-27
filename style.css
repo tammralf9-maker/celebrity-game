@@ -3,16 +3,19 @@
 }
 
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background: #0f0f1a;
-    color: white;
     margin: 0;
     padding: 20px;
+
+    background: #0f0f1a;
+    color: white;
+
+    font-family: 'Segoe UI', sans-serif;
 }
 
 .container {
     max-width: 800px;
     margin: auto;
+
     text-align: center;
 }
 
@@ -21,27 +24,29 @@ body {
 }
 
 .game-area {
-    position: relative;
     max-width: 500px;
+
     margin: 20px auto;
 
     border-radius: 12px;
+
     overflow: hidden;
 
     border: 6px solid #1a1a2e;
-
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 .image-container {
     position: relative;
+
     width: 100%;
+
     aspect-ratio: 1 / 1;
 }
 
 #celebrityImage {
     width: 100%;
     height: 100%;
+
     object-fit: cover;
 
     filter: blur(12px);
@@ -51,6 +56,7 @@ body {
 
 .grid {
     position: absolute;
+
     inset: 0;
 
     display: grid;
@@ -63,16 +69,18 @@ body {
 
 .grid-cell {
 
+    width: 100%;
+    height: 100%;
+
     background-repeat: no-repeat;
+
+    background-size: 300% 300%;
 
     filter: blur(12px);
 
-    transition: 0.3s;
+    transition: filter 0.3s ease;
 
     cursor: pointer;
-
-    width: 100%;
-    height: 100%;
 }
 
 .grid-cell.revealed {
@@ -81,9 +89,11 @@ body {
 
 .answer-section {
     display: flex;
+
     gap: 10px;
 
     max-width: 500px;
+
     margin: 20px auto;
 }
 
@@ -93,6 +103,7 @@ body {
     padding: 14px;
 
     border: none;
+
     border-radius: 10px;
 
     font-size: 1rem;
@@ -102,9 +113,11 @@ body {
     padding: 14px 24px;
 
     border: none;
+
     border-radius: 10px;
 
     background: #4a90d9;
+
     color: white;
 
     font-weight: bold;
@@ -128,7 +141,7 @@ body {
 }
 
 .score {
-    color: #999;
+    color: #aaa;
 }
 
 .score span {
@@ -138,9 +151,11 @@ body {
 
 .navigation {
     display: flex;
+
     gap: 10px;
 
     max-width: 500px;
+
     margin: 20px auto;
 }
 
@@ -150,9 +165,11 @@ body {
     padding: 14px;
 
     border: none;
+
     border-radius: 10px;
 
     background: #1a1a2e;
+
     color: white;
 
     cursor: pointer;
@@ -169,6 +186,7 @@ body {
     border: 2px dashed #666;
 
     background: transparent;
+
     color: #aaa;
 
     cursor: pointer;
