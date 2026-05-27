@@ -3,151 +3,182 @@
 }
 
 body {
-    font-family: 'Segoe UI', system-ui, sans-serif;
-    background: #0f0f1a;
-    color: #eee;
     margin: 0;
     padding: 20px;
+
+    background: #111827;
+    color: white;
+
+    font-family: Arial, sans-serif;
 }
 
 .container {
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 700px;
+    margin: auto;
     text-align: center;
 }
 
 h1 {
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .instructions {
+    color: #bdbdbd;
     margin-bottom: 20px;
-    color: #aaa;
 }
 
 .game-area {
-    position: relative;
     max-width: 500px;
-    margin: 20px auto;
-    border: 8px solid #1a1a2e;
+    margin: auto;
+
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+
+    border: 5px solid #1f2937;
 }
 
 .image-container {
     position: relative;
     width: 100%;
-    aspect-ratio: 1 / 1;           /* ruudukujuline */
+    aspect-ratio: 1 / 1;
 }
 
 #celebrityImage {
     width: 100%;
     height: 100%;
+
     object-fit: cover;
-    filter: blur(12px);            /* algne blur kogu pildile */
-    transition: filter 0.4s ease;
+
+    filter: blur(12px);
+
+    transition: 0.3s;
 }
 
 .grid {
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+
+    inset: 0;
+
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+
     gap: 3px;
     padding: 3px;
-    background: #000; /* vahejoonte jaoks */
+
+    background: black;
 }
 
 .grid-cell {
-    background-size: 500% 500%;     /* 5x5 grid */
-    background-position: center;
+    background-repeat: no-repeat;
+
     filter: blur(12px);
+
     cursor: pointer;
-    transition: filter 0.35s ease;
+
+    transition: 0.3s;
+
     border-radius: 4px;
 }
 
 .grid-cell.revealed {
-    filter: blur(0);
+    filter: blur(0px);
 }
 
 .answer-section {
-    margin: 20px 0;
     display: flex;
+
     gap: 10px;
+
     max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
+
+    margin: 20px auto;
 }
 
 #guessInput {
     flex: 1;
+
     padding: 14px;
-    font-size: 1.1rem;
+
     border: none;
+
     border-radius: 10px;
+
+    font-size: 1rem;
 }
 
 #checkBtn {
-    padding: 0 28px;
-    background: #4a90d9;
-    color: white;
+    padding: 14px 22px;
+
     border: none;
+
     border-radius: 10px;
-    font-weight: bold;
+
     cursor: pointer;
+
+    background: #3b82f6;
+    color: white;
+
+    font-weight: bold;
 }
 
 #feedback {
-    min-height: 28px;
-    font-size: 1.2rem;
+    min-height: 30px;
+
+    font-size: 1.1rem;
     font-weight: bold;
 }
 
-.correct { color: #2ecc71; }
-.wrong   { color: #e74c3c; }
-
-.score {
-    text-align: center;
-    color: #666;
-    margin: 15px 0;
-    font-size: 1.1rem;
+.correct {
+    color: #22c55e;
 }
 
-.score span {
-    font-weight: 700;
-    color: #4a90d9;
+.wrong {
+    color: #ef4444;
+}
+
+.score {
+    margin-top: 15px;
 }
 
 .navigation {
     display: flex;
-    justify-content: space-between;
-    gap: 15px;
-    margin: 20px auto;
+
+    gap: 10px;
+
     max-width: 500px;
+
+    margin: 20px auto;
 }
 
 .navigation button {
     flex: 1;
+
     padding: 14px;
-    background: #1a1a2e;
-    color: white;
+
     border: none;
+
     border-radius: 10px;
-    font-size: 1.1rem;
+
+    background: #1f2937;
+    color: white;
+
     cursor: pointer;
 }
 
 .reveal-btn {
     width: 100%;
     max-width: 500px;
-    margin: 10px auto;
-    padding: 12px;
-    background: transparent;
-    color: #999;
-    border: 2px dashed #666;
+
+    padding: 14px;
+
     border-radius: 10px;
+
+    border: 2px dashed #666;
+
+    background: transparent;
+    color: #aaa;
+
     cursor: pointer;
 }
