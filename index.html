@@ -4,32 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arva ära kuulsus!</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="container">
+
         <h1>Arva ära kuulsus!</h1>
 
         <p class="instructions">
-            Vajuta ruutudele, et pilti selgemaks teha ja arva ära, kes on pildil.
+            Vajuta ruutudele, et pilti selgemaks teha.
         </p>
 
         <div class="game-area">
+
             <div class="image-container">
 
-                <!-- Bluritud pilt -->
                 <img id="celebrityImage" src="" alt="Kuulsus">
 
-                <!-- 3x3 grid -->
                 <div class="grid" id="grid"></div>
 
             </div>
+
         </div>
 
         <div class="answer-section">
-            <input type="text" id="guessInput" placeholder="Kirjuta nimi siia...">
-            <button id="checkBtn">Kontrolli</button>
+
+            <input
+                type="text"
+                id="guessInput"
+                placeholder="Kirjuta nimi siia..."
+            >
+
+            <button id="checkBtn">
+                Kontrolli
+            </button>
+
         </div>
 
         <p id="feedback"></p>
@@ -37,12 +48,19 @@
         <p class="score">
             Skoor:
             <span id="score">0</span> /
-            <span id="total">0</span>
+            <span id="total">13</span>
         </p>
 
         <div class="navigation">
-            <button id="prevBtn">← Eelmine</button>
-            <button id="nextBtn">Järgmine →</button>
+
+            <button id="prevBtn">
+                ← Eelmine
+            </button>
+
+            <button id="nextBtn">
+                Järgmine →
+            </button>
+
         </div>
 
         <button id="revealBtn" class="reveal-btn">
@@ -52,5 +70,6 @@
     </div>
 
     <script src="script.js"></script>
+
 </body>
 </html>
