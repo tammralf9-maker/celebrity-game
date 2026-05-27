@@ -44,6 +44,7 @@ function initGame() {
     totalDisplay.textContent = celebrities.length;
 
     loadCelebrity();
+
     updateNavigation();
 }
 
@@ -56,22 +57,18 @@ function createGrid() {
     for (let i = 0; i < cols * cols; i++) {
 
         const cell = document.createElement("div");
+
         cell.className = "grid-cell";
 
         const row = Math.floor(i / cols);
         const col = i % cols;
 
-        // ÕIGED pildi positsioonid
-        const x = (col / (cols - 1)) * 100;
-        const y = (row / (cols - 1)) * 100;
-
         cell.style.backgroundImage =
             `url('${celebrities[currentIndex].image}')`;
 
-        cell.style.backgroundSize = "300% 300%";
-
+        // ÕIGE süsteem 3x3 jaoks
         cell.style.backgroundPosition =
-            `${x}% ${y}%`;
+            `${col * 50}% ${row * 50}%`;
 
         if (revealedCells[currentIndex].has(i)) {
             cell.classList.add("revealed");
@@ -98,6 +95,7 @@ function loadCelebrity() {
     image.src = celeb.image;
 
     guessInput.value = "";
+
     feedback.textContent = "";
 
     if (guessedCorrectly[currentIndex]) {
@@ -105,6 +103,7 @@ function loadCelebrity() {
         image.style.filter = "blur(0px)";
 
         guessInput.disabled = true;
+
         checkBtn.disabled = true;
 
         feedback.textContent =
@@ -117,6 +116,7 @@ function loadCelebrity() {
         image.style.filter = "blur(12px)";
 
         guessInput.disabled = false;
+
         checkBtn.disabled = false;
     }
 
@@ -157,12 +157,14 @@ function checkGuess() {
 
         image.style.filter = "blur(0px)";
 
-        document.querySelectorAll(".grid-cell")
+        document
+            .querySelectorAll(".grid-cell")
             .forEach(cell => {
                 cell.classList.add("revealed");
             });
 
         guessInput.disabled = true;
+
         checkBtn.disabled = true;
 
     } else {
@@ -183,12 +185,14 @@ function revealAnswer() {
 
     image.style.filter = "blur(0px)";
 
-    document.querySelectorAll(".grid-cell")
+    document
+        .querySelectorAll(".grid-cell")
         .forEach(cell => {
             cell.classList.add("revealed");
         });
 
     guessInput.disabled = true;
+
     checkBtn.disabled = true;
 }
 
