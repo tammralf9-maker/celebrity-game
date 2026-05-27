@@ -7,15 +7,23 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <div class="container">
         <h1>Arva ära kuulsus!</h1>
-        <p class="instructions">Kliki ruutudel, et pilt selgemaks teha. Arva ära, kes on pildil!</p>
-        
+
+        <p class="instructions">
+            Vajuta ruutudele, et pilti selgemaks teha ja arva ära, kes on pildil.
+        </p>
+
         <div class="game-area">
-            <div class="image-container" id="imageContainer">
-                <!-- Terav pilt taustal -->
+            <div class="image-container">
+
+                <!-- Bluritud pilt -->
                 <img id="celebrityImage" src="" alt="Kuulsus">
+
+                <!-- 3x3 grid -->
                 <div class="grid" id="grid"></div>
+
             </div>
         </div>
 
@@ -25,14 +33,22 @@
         </div>
 
         <p id="feedback"></p>
-        <p class="score">Skoor: <span id="score">0</span> / <span id="total">13</span></p>
+
+        <p class="score">
+            Skoor:
+            <span id="score">0</span> /
+            <span id="total">0</span>
+        </p>
 
         <div class="navigation">
             <button id="prevBtn">← Eelmine</button>
             <button id="nextBtn">Järgmine →</button>
         </div>
 
-        <button id="revealBtn" class="reveal-btn">Näita vastust</button>
+        <button id="revealBtn" class="reveal-btn">
+            Näita vastust
+        </button>
+
     </div>
 
     <script src="script.js"></script>
