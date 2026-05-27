@@ -1,29 +1,17 @@
 const celebrities = [
-    {
-        name: "Erki Nool",
-        image: "images/erki-nool.jpg",
-        aliases: ["nool", "erki"]
-    },
-    {
-        name: "Alar Karis",
-        image: "images/alar-karis.jpg",
-        aliases: ["karis", "president karis"]
-    },
-    {
-        name: "Gerd Kanter",
-        image: "images/gerd-kanter.jpg",
-        aliases: ["kanter", "gerd"]
-    },
-    {
-        name: "Erika Salumäe",
-        image: "images/erika-salumae.jpg",
-        aliases: ["salumäe", "erika"]
-    },
-    {
-        name: "Mait Malmsten",
-        image: "images/mait-malmsten.jpg",
-        aliases: ["malmsten", "mait"]
-    }
+    { name: "Erki Nool", image: "images/erki-nool.jpg", aliases: ["nool", "erki"] },
+    { name: "Alar Karis", image: "images/alar-karis.jpg", aliases: ["karis", "president karis"] },
+    { name: "Gerd Kanter", image: "images/gerd-kanter.jpg", aliases: ["kanter", "gerd"] },
+    { name: "Erika Salumäe", image: "images/erika-salumae.jpg", aliases: ["salumäe", "erika"] },
+    { name: "Mait Malmsten", image: "images/mait-malmsten.jpg", aliases: ["malmsten", "mait"] },
+    { name: "Ott Sepp", image: "images/ott-sepp.jpg", aliases: ["sepp", "ott"] },
+    { name: "Marika Vaarik", image: "images/marika-vaarik.jpg", aliases: ["vaarik", "marika"] },
+    { name: "Tanel Padar", image: "images/tanel-padar.jpg", aliases: ["padar", "tanel"] },
+    { name: "Kristina Kallas", image: "images/kristina-kallas.jpg", aliases: ["kallas", "kristina"] },
+    { name: "Lennart Meri", image: "images/lennart-meri.jpg", aliases: ["meri", "lennart"] },
+    { name: "Arvo Pärt", image: "images/arvo-part.jpg", aliases: ["pärt", "arvo"] },
+    { name: "Ursula von der Leyen", image: "images/ursula-von-der-leyen.jpg", aliases: ["ursula", "leyen"] },
+    { name: "Mark Rutte", image: "images/mark-rutte.jpg", aliases: ["rutte", "mark"] }
 ];
 
 let currentIndex = 0;
@@ -53,10 +41,6 @@ function initGame() {
     revealedCells = celebrities.map(() => new Set());
     guessedCorrectly = celebrities.map(() => false);
 
-    score = 0;
-    currentIndex = 0;
-
-    scoreDisplay.textContent = score;
     totalDisplay.textContent = celebrities.length;
 
     loadCelebrity();
@@ -77,14 +61,14 @@ function createGrid() {
         const row = Math.floor(i / cols);
         const col = i % cols;
 
+        // ÕIGED pildi positsioonid
         const x = (col / (cols - 1)) * 100;
         const y = (row / (cols - 1)) * 100;
 
         cell.style.backgroundImage =
             `url('${celebrities[currentIndex].image}')`;
 
-        cell.style.backgroundSize =
-            `${cols * 100}% ${cols * 100}%`;
+        cell.style.backgroundSize = "300% 300%";
 
         cell.style.backgroundPosition =
             `${x}% ${y}%`;
@@ -151,10 +135,9 @@ function checkGuess() {
         ...celeb.aliases.map(a => a.toLowerCase())
     ];
 
-    const correct =
-        answers.some(ans =>
-            guess.includes(ans) || ans.includes(guess)
-        );
+    const correct = answers.some(ans =>
+        guess.includes(ans) || ans.includes(guess)
+    );
 
     if (correct) {
 
@@ -188,8 +171,6 @@ function checkGuess() {
             "✗ Vale vastus!";
 
         feedback.className = "wrong";
-
-        guessInput.value = "";
     }
 }
 
@@ -199,8 +180,6 @@ function revealAnswer() {
 
     feedback.textContent =
         `See on ${celeb.name}`;
-
-    feedback.className = "";
 
     image.style.filter = "blur(0px)";
 
