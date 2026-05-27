@@ -1,4 +1,5 @@
 const celebrities = [
+
     { name: "Erki Nool", image: "images/erki-nool.jpg", aliases: ["nool", "erki"] },
     { name: "Alar Karis", image: "images/alar-karis.jpg", aliases: ["karis", "president karis"] },
     { name: "Gerd Kanter", image: "images/gerd-kanter.jpg", aliases: ["kanter", "gerd"] },
@@ -12,6 +13,7 @@ const celebrities = [
     { name: "Arvo Pärt", image: "images/arvo-part.jpg", aliases: ["pärt", "arvo"] },
     { name: "Ursula von der Leyen", image: "images/ursula-von-der-leyen.jpg", aliases: ["ursula", "leyen"] },
     { name: "Mark Rutte", image: "images/mark-rutte.jpg", aliases: ["rutte", "mark"] }
+
 ];
 
 let currentIndex = 0;
@@ -21,27 +23,48 @@ let revealedCells = [];
 let guessedCorrectly = [];
 
 const grid = document.getElementById("grid");
-const image = document.getElementById("celebrityImage");
 
-const guessInput = document.getElementById("guessInput");
-const checkBtn = document.getElementById("checkBtn");
+const image =
+    document.getElementById("celebrityImage");
 
-const feedback = document.getElementById("feedback");
+const guessInput =
+    document.getElementById("guessInput");
 
-const scoreDisplay = document.getElementById("score");
-const totalDisplay = document.getElementById("total");
+const checkBtn =
+    document.getElementById("checkBtn");
 
-const prevBtn = document.getElementById("prevBtn");
-const nextBtn = document.getElementById("nextBtn");
+const feedback =
+    document.getElementById("feedback");
 
-const revealBtn = document.getElementById("revealBtn");
+const scoreDisplay =
+    document.getElementById("score");
+
+const totalDisplay =
+    document.getElementById("total");
+
+const prevBtn =
+    document.getElementById("prevBtn");
+
+const nextBtn =
+    document.getElementById("nextBtn");
+
+const revealBtn =
+    document.getElementById("revealBtn");
 
 function initGame() {
 
-    revealedCells = celebrities.map(() => new Set());
-    guessedCorrectly = celebrities.map(() => false);
+    revealedCells =
+        celebrities.map(() => new Set());
 
-    totalDisplay.textContent = celebrities.length;
+    guessedCorrectly =
+        celebrities.map(() => false);
+
+    score = 0;
+
+    scoreDisplay.textContent = score;
+
+    totalDisplay.textContent =
+        celebrities.length;
 
     loadCelebrity();
 
@@ -56,31 +79,50 @@ function createGrid() {
 
     for (let i = 0; i < cols * cols; i++) {
 
-        const cell = document.createElement("div");
+        const cell =
+            document.createElement("div");
 
         cell.className = "grid-cell";
 
-        const row = Math.floor(i / cols);
-        const col = i % cols;
+        const row =
+            Math.floor(i / cols);
+
+        const col =
+            i % cols;
+
+        const posX =
+            (col / (cols - 1)) * 100;
+
+        const posY =
+            (row / (cols - 1)) * 100;
 
         cell.style.backgroundImage =
             `url('${celebrities[currentIndex].image}')`;
 
-        // ÕIGE süsteem 3x3 jaoks
-        cell.style.backgroundPosition =
-            `${col * 50}% ${row * 50}%`;
+        cell.style.backgroundSize =
+            `${cols * 100}% ${cols * 100}%`;
 
-        if (revealedCells[currentIndex].has(i)) {
+        cell.style.backgroundPosition =
+            `${posX}% ${posY}%`;
+
+        if (
+            revealedCells[currentIndex].has(i)
+        ) {
             cell.classList.add("revealed");
         }
 
         cell.addEventListener("click", () => {
 
-            if (!cell.classList.contains("revealed")) {
+            if (
+                !cell.classList.contains(
+                    "revealed"
+                )
+            ) {
 
                 cell.classList.add("revealed");
 
-                revealedCells[currentIndex].add(i);
+                revealedCells[currentIndex]
+                    .add(i);
             }
         });
 
@@ -90,7 +132,8 @@ function createGrid() {
 
 function loadCelebrity() {
 
-    const celeb = celebrities[currentIndex];
+    const celeb =
+        celebrities[currentIndex];
 
     image.src = celeb.image;
 
@@ -98,18 +141,20 @@ function loadCelebrity() {
 
     feedback.textContent = "";
 
-    if (guessedCorrectly[currentIndex]) {
+    if (
+        guessedCorrectly[currentIndex]
+    ) {
 
         image.style.filter = "blur(0px)";
-
-        guessInput.disabled = true;
-
-        checkBtn.disabled = true;
 
         feedback.textContent =
             `✓ Õige! See on ${celeb.name}`;
 
         feedback.className = "correct";
+
+        guessInput.disabled = true;
+
+        checkBtn.disabled = true;
 
     } else {
 
@@ -126,18 +171,27 @@ function loadCelebrity() {
 function checkGuess() {
 
     const guess =
-        guessInput.value.trim().toLowerCase();
+        guessInput.value
+            .trim()
+            .toLowerCase();
 
-    const celeb = celebrities[currentIndex];
+    const celeb =
+        celebrities[currentIndex];
 
     const answers = [
+
         celeb.name.toLowerCase(),
-        ...celeb.aliases.map(a => a.toLowerCase())
+
+        ...celeb.aliases.map(a =>
+            a.toLowerCase()
+        )
     ];
 
-    const correct = answers.some(ans =>
-        guess.includes(ans) || ans.includes(guess)
-    );
+    const correct =
+        answers.some(ans =>
+            guess.includes(ans) ||
+            ans.includes(guess)
+        );
 
     if (correct) {
 
@@ -146,7 +200,9 @@ function checkGuess() {
 
         feedback.className = "correct";
 
-        if (!guessedCorrectly[currentIndex]) {
+        if (
+            !guessedCorrectly[currentIndex]
+        ) {
 
             guessedCorrectly[currentIndex] = true;
 
@@ -160,7 +216,10 @@ function checkGuess() {
         document
             .querySelectorAll(".grid-cell")
             .forEach(cell => {
-                cell.classList.add("revealed");
+
+                cell.classList.add(
+                    "revealed"
+                );
             });
 
         guessInput.disabled = true;
@@ -178,7 +237,8 @@ function checkGuess() {
 
 function revealAnswer() {
 
-    const celeb = celebrities[currentIndex];
+    const celeb =
+        celebrities[currentIndex];
 
     feedback.textContent =
         `See on ${celeb.name}`;
@@ -188,6 +248,7 @@ function revealAnswer() {
     document
         .querySelectorAll(".grid-cell")
         .forEach(cell => {
+
             cell.classList.add("revealed");
         });
 
@@ -198,15 +259,20 @@ function revealAnswer() {
 
 function updateNavigation() {
 
-    prevBtn.disabled = currentIndex === 0;
+    prevBtn.disabled =
+        currentIndex === 0;
 
     nextBtn.disabled =
-        currentIndex === celebrities.length - 1;
+        currentIndex ===
+        celebrities.length - 1;
 }
 
 function goNext() {
 
-    if (currentIndex < celebrities.length - 1) {
+    if (
+        currentIndex <
+        celebrities.length - 1
+    ) {
 
         currentIndex++;
 
@@ -228,19 +294,34 @@ function goPrev() {
     }
 }
 
-checkBtn.addEventListener("click", checkGuess);
+checkBtn.addEventListener(
+    "click",
+    checkGuess
+);
 
-guessInput.addEventListener("keypress", e => {
+guessInput.addEventListener(
+    "keypress",
+    e => {
 
-    if (e.key === "Enter") {
-        checkGuess();
+        if (e.key === "Enter") {
+            checkGuess();
+        }
     }
-});
+);
 
-nextBtn.addEventListener("click", goNext);
+nextBtn.addEventListener(
+    "click",
+    goNext
+);
 
-prevBtn.addEventListener("click", goPrev);
+prevBtn.addEventListener(
+    "click",
+    goPrev
+);
 
-revealBtn.addEventListener("click", revealAnswer);
+revealBtn.addEventListener(
+    "click",
+    revealAnswer
+);
 
 initGame();
